@@ -119,10 +119,10 @@ async def process_scan(message: types.Message, state: FSMContext):
 
         if status['state'] == 'SUCCESS':
             await state.finish()
-            rating = round(status['result']['rating'] * 100)
+            rating = status['result']['rating']
             await bot.send_message(
                 message.chat.id,
-                f'Качество разметки ИИ-сервиса: `{rating}%`',
+                'Качество разметки ИИ-сервиса: ' + '⭐️' * rating,
                 parse_mode=ParseMode.MARKDOWN)
             break
 
